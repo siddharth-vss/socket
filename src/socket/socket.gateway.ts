@@ -25,9 +25,37 @@ export class SocketGateway {
     }
   
     @SubscribeMessage('broadcast')
-    handleBroadcast(@MessageBody() data: { message: string }, client: Socket): void {
+    handleBroadcast(@MessageBody() data: any, client: Socket): void {
       console.log('broadcast Message received:', data);
 
       this.server.emit('broadcast', data);
     }
+
+
+    @SubscribeMessage('offer')
+    handleOffer(@MessageBody() data: any, client: Socket): void {
+      console.log('broadcast Message received:', data);
+
+      this.server.emit('offer', data);
+    }
+
+
+    @SubscribeMessage('answer')
+    handleAnswer(@MessageBody() data: any, client: Socket): void {
+      console.log('broadcast Message received:', data);
+
+      this.server.emit('answer', data);
+    }
+
+
+    @SubscribeMessage('ice-candidate')
+    handleIceCandidate(@MessageBody() data:any, client: Socket): void {
+      console.log('broadcast Message received:', data);
+
+      this.server.emit('ice-candidate', data);
+    }
+
+
+    
+  
 }
